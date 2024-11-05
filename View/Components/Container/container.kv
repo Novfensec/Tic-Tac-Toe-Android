@@ -1,7 +1,7 @@
 <Container>:
     orientation: "vertical"
     type: "fluid"
-    spacing: 10
+    padding: [10, 10, 10, 10]
     state_hover: 0.4
     md_bg_color: app.theme_cls.surfaceContainerLowColor
     size_hint: None, None
@@ -9,12 +9,14 @@
     height: "85dp"
     radius: fab_button.radius
 
-    MDFabButton:
-        id: fab_button
-        style: "standard"
-        icon: f"{root.text}"
-        theme_font_size: 'Custom'
-        font_size: "56dp"
-        pos_hint: {'center_x': 0.5,'center_y': 0.5}
-        on_release:
-            root.set_text(root.id, root.active)
+    MDAnchorLayout:
+        size_hint: 1, 1
+        MDFabButton:
+            id: fab_button
+            style: "standard"
+            adaptive_height: True
+            icon: f"{root.text}"
+            theme_font_size: 'Custom'
+            font_size: "56dp"
+            on_release:
+                root.set_text(root.id, root.active)
