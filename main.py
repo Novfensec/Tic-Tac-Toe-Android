@@ -79,6 +79,7 @@ import registers
 from kivymd.app import MDApp
 from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.snackbar import MDSnackbar, MDSnackbarText
+from kivymd.utils.set_bars_colors import set_bars_colors
 
 class UI(MDScreenManager):
     def __init__(self, *args,**kwargs):
@@ -89,6 +90,7 @@ class TicTacToe(MDApp):
         super(TicTacToe, self).__init__(*args,**kwargs)
         self.load_all_kv_files(self.directory)
         self.theme_cls.primary_palette = "Midnightblue"
+        self.set_bars_colors()
         self.manager_screens=UI()
 
     def build(self) -> UI:
@@ -122,6 +124,13 @@ class TicTacToe(MDApp):
                 ),
                 background_color = self.theme_cls.onPrimaryContainerColor
             ).open()
+
+     def set_bars_colors(self) -> None:
+         set_bars_colors(
+             self.theme_cls.surfaceColor,  # status bar color
+             self.theme_cls.surfaceColor,  # navigation bar color
+             "Light",                       # icons color of status bar
+         )
 
 if __name__ == '__main__':
     TicTacToe().run()
