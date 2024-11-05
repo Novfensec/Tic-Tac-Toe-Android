@@ -1,0 +1,32 @@
+<HomeScreenView>:
+    on_enter:
+        grid.reset()
+    MDFloatLayout:
+        size_hint: 1, 1
+
+        MDLabel:
+            text: "Tic Tac Toe"
+            font_style: "Display"
+            role: "medium"
+            halign: 'center'
+            pos_hint: {'center_y': 0.8}
+
+        MainGrid:
+            id: grid
+            cols: 3
+            rows: 3
+            adaptive_size: True
+            spacing: "10dp"
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+        MDButton:
+            style: 'tonal'
+            pos_hint: {'center_x': 0.5,'center_y': 0.2}
+            theme_width: 'Custom'
+            width: "130dp"
+            on_release:
+                grid.reset(0.25)
+
+            MDButtonText:
+                text: 'RESET'
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
