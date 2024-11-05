@@ -9,6 +9,7 @@ class MainGrid(MDGridLayout):
         self.clear_widgets()
 
     def add_cells(self, *args) -> None:
+        self.clear_widgets()
         for x in range(1,-~9):
             self.add_widget(Container(id=str(x)))
 
