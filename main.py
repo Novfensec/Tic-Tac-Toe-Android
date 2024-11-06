@@ -1,6 +1,7 @@
 # import os
 
 # import registers
+# import webbrowser
 # import importlib
 # from kivy import Config
 # from PIL import ImageGrab
@@ -32,7 +33,7 @@
 #         self.KV_DIRS=[
 #             os.path.join(os.getcwd(), "View"),
 #         ]
-#         self.theme_cls.primary_palette = "Midnightblue"
+#         self.theme_cls.primary_palette = "Dodgerblue"
 
 #     def build_app(self) -> UI:
 #         self.manager_screens = UI()
@@ -40,7 +41,7 @@
 #         return self.manager_screens
 
 #     def generate_application_screens(self) -> None:
-#        # adds different screen widgets to the screen manager 
+#        # adds different screen widgets to the screen manager
 #         import View.screens
 #         importlib.reload(View.screens)
 #         screens = View.screens.screens
@@ -68,38 +69,48 @@
 #                 background_color = self.theme_cls.onPrimaryContainerColor
 #             ).open()
 
+#     def apply_styles(self, style: str = "Light") -> None:
+#         self.theme_cls.theme_style = style
+
+#     def web_open(self, url: str) -> None:
+#         webbrowser.open_new_tab(url)
+
 # if __name__ == '__main__':
 #     TicTacToe().run()
 
-'''
+"""
 For Production uncomment the below code and comment out the above code
-'''
+"""
 
 import registers
+import webbrowser
 from kivymd.app import MDApp
 from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.snackbar import MDSnackbar, MDSnackbarText
 from kivymd.utils.set_bars_colors import set_bars_colors
 
+
 class UI(MDScreenManager):
-    def __init__(self, *args,**kwargs):
-        super(UI, self).__init__(*args,**kwargs)
+    def __init__(self, *args, **kwargs):
+        super(UI, self).__init__(*args, **kwargs)
+
 
 class TicTacToe(MDApp):
-    def __init__(self, *args,**kwargs):
-        super(TicTacToe, self).__init__(*args,**kwargs)
+    def __init__(self, *args, **kwargs):
+        super(TicTacToe, self).__init__(*args, **kwargs)
         self.load_all_kv_files(self.directory)
         self.theme_cls.primary_palette = "Midnightblue"
-        self.set_bars_colors()
-        self.manager_screens=UI()
+        self.manager_screens = UI()
 
     def build(self) -> UI:
+        self.set_bars_colors()
         self.generate_application_screens()
         return self.manager_screens
 
     def generate_application_screens(self) -> None:
-       # adds different screen widgets to the screen manager 
+        # adds different screen widgets to the screen manager
         import View.screens
+
         screens = View.screens.screens
 
         for i, name_screen in enumerate(screens.keys()):
@@ -110,27 +121,29 @@ class TicTacToe(MDApp):
 
     def show(self, current_player: str = None, text: str = None, *args) -> None:
         if text == None:
-            icon = "X" if current_player == 'x' else "O"
+            icon = "X" if current_player == "x" else "O"
             MDSnackbar(
-                MDSnackbarText(
-                    text = f"Winner is player with {icon}"
-                ),
-                background_color = self.theme_cls.onPrimaryContainerColor
+                MDSnackbarText(text=f"Winner is player with {icon}"),
+                background_color=self.theme_cls.onPrimaryContainerColor,
             ).open()
         else:
             MDSnackbar(
-                MDSnackbarText(
-                    text = f"{text}"
-                ),
-                background_color = self.theme_cls.onPrimaryContainerColor
+                MDSnackbarText(text=f"{text}"),
+                background_color=self.theme_cls.onPrimaryContainerColor,
             ).open()
 
     def set_bars_colors(self) -> None:
         set_bars_colors(
-            self.theme_cls.inversePrimaryColor,  # status bar color
-            self.theme_cls.inversePrimaryColor,  # navigation bar color
-            "Light",                      # icons color of status bar
+            self.theme_cls.primaryColor,  # status bar color
+            self.theme_cls.primaryColor,  # navigation bar color
+            "Light",  # icons color of status bar
         )
 
-if __name__ == '__main__':
+    def apply_styles(self, style: str = "Light") -> None:
+        self.theme_cls.theme_style = style
+
+    def web_open(self, url: str) -> None:
+        webbrowser.open_new_tab(url)
+
+if __name__ == "__main__":
     TicTacToe().run()

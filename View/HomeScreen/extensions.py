@@ -3,7 +3,7 @@ Contains the logic for the game.
 ---
 """
 
-INITIAL_PLAYER = 'o'
+INITIAL_PLAYER = "o"
 
 current_player = INITIAL_PLAYER
 
@@ -19,34 +19,39 @@ WINNING_COMBINATIONS = [
 ]
 
 cells_combination = {
-    'x' : [],
-    'o' : [],
+    "x": [],
+    "o": [],
 }
 
-def get_current_player(*args) -> list:
+
+def get_current_player() -> list:
     global current_player
-    if current_player == 'x':
-        text = 'circle-outline'
-        current_player = 'o'
+    if current_player == "x":
+        text = "circle-outline"
+        current_player = "o"
     else:
-        text = 'close'
-        current_player = 'x'
+        text = "close"
+        current_player = "x"
     return text, current_player
 
-def update(id: str, active: bool, *args) -> None:
+
+def update(id: str) -> bool:
     global current_player, cells_combination, WINNING_COMBINATIONS
 
-    if active:
-        cells_combination[current_player].append(int(id))
+    cells_combination[current_player].append(int(id))
 
-    win = any(combination.issubset(cells_combination[current_player]) for combination in WINNING_COMBINATIONS)
-    
-    if not win and len(cells_combination['x'] + cells_combination['o']) == 9:
+    win = any(
+        combination.issubset(cells_combination[current_player])
+        for combination in WINNING_COMBINATIONS
+    )
+
+    if not win and len(cells_combination["x"] + cells_combination["o"]) == 9:
         return None
     return win
+
 
 def reset() -> None:
     global INITIAL_PLAYER, current_player, cells_combination
     current_player = INITIAL_PLAYER
-    cells_combination['x'].clear()
-    cells_combination['o'].clear()
+    cells_combination["x"].clear()
+    cells_combination["o"].clear()

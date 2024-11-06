@@ -1,8 +1,34 @@
 <HomeScreenView>:
     on_enter:
         grid.reset()
+
+    MDStackLayout:
+        size_hint: 1, 1
+        padding: [5, 5, 5, 5]
+        spacing: 5
+
+        MDIconButton:
+            style: "tonal"
+            md_bg_color: app.theme_cls.primaryContainerColor
+            icon: 
+                'weather-night' if app.theme_cls.theme_style == 'Light' else 'weather-sunny'
+            on_release:
+                app.apply_styles('Dark') if app.theme_cls.theme_style == 'Light' else app.apply_styles('Light')
+
+        MDButton:
+            style: "tonal"
+            on_press: 
+                app.web_open("https://github.com/Novfensec")
+            
+            MDButtonIcon:
+                icon: "copyright"
+            
+            MDButtonText:
+                text: "Novfensec Inc. (Kartavya Shukla)"
+
     MDFloatLayout:
         size_hint: 1, 1
+
 
         MDLabel:
             text: "Tic Tac Toe"
@@ -16,17 +42,18 @@
             cols: 3
             rows: 3
             adaptive_size: True
-            spacing: "10dp"
+            spacing: 5
             pos_hint: {'center_x': 0.5,'center_y': 0.5}
 
         MDButton:
-            style: 'tonal'
+            style: "tonal"
             pos_hint: {'center_x': 0.5,'center_y': 0.2}
             theme_width: 'Custom'
             width: "130dp"
             on_release:
-                grid.reset(0.25)
+                grid.reset(0.1)
 
             MDButtonText:
                 text: 'RESET'
                 pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
