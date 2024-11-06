@@ -127,8 +127,8 @@ class TicTacToe(MDApp):
 
     def set_bars_colors(self) -> None:
         set_bars_colors(
-            self.theme_cls.backgroundColor,  # status bar color
-            self.theme_cls.backgroundColor,  # navigation bar color
+            self.theme_cls.inversePrimaryColor,  # status bar color
+            self.theme_cls.inversePrimaryColor,  # navigation bar color
             "Light",                      # icons color of status bar
         )
 
