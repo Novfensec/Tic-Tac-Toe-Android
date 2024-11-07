@@ -141,6 +141,7 @@ class TicTacToe(MDApp):
 
     def apply_styles(self, style: str = "Light") -> None:
         self.theme_cls.theme_style = style
+        self.set_bars_colors()
 
     def web_open(self, url: str) -> None:
         webbrowser.open_new_tab(url)

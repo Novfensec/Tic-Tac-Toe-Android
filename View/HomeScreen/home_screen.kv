@@ -4,8 +4,8 @@
 
     MDStackLayout:
         size_hint: 1, 1
-        padding: [5, 5, 5, 5]
-        spacing: 5
+        padding: [10, 10, 10, 10]
+        spacing: 10
 
         MDIconButton:
             style: "tonal"
@@ -17,7 +17,8 @@
 
         MDButton:
             style: "tonal"
-            on_press: 
+            radius: [5]
+            on_release: 
                 app.web_open("https://github.com/Novfensec")
             
             MDButtonIcon:
@@ -28,7 +29,6 @@
 
     MDFloatLayout:
         size_hint: 1, 1
-
 
         MDLabel:
             text: "Tic Tac Toe"
@@ -56,4 +56,3 @@
             MDButtonText:
                 text: 'RESET'
                 pos_hint: {'center_x': 0.5,'center_y': 0.5}
-
