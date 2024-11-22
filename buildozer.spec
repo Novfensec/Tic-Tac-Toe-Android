@@ -37,7 +37,7 @@ version = 0.2
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3, kivy==2.3.0, https://github.com/kivymd/KivyMD/archive/master.zip, pillow==10.3.0, materialyoucolor, exceptiongroup, asyncgui, asynckivy
+requirements = python3, kivy==2.3.0, https://github.com/kivymd/KivyMD/archive/master.zip, pillow, materialyoucolor, exceptiongroup, asyncgui, asynckivy
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -360,8 +360,8 @@ p4a.branch = master
 # (str) Path to a custom kivy-ios folder
 #ios.kivy_ios_dir = ../kivy-ios
 # Alternately, specify the URL and branch of a git checkout:
-ios.kivy_ios_url = https://github.com/kivy/kivy-ios
-ios.kivy_ios_branch = master
+ios.kivy_ios_url = https://github.com/Novfensec/kivy-ios
+ios.kivy_ios_branch = patch-1
 
 # Another platform dependency: ios-deploy
 # Uncomment to use a custom checkout
