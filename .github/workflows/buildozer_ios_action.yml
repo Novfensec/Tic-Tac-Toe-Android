@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           brew update
-          brew reinstall autoconf automake libtool pkg-config libjpeg libtiff webp little-cms2
+          brew reinstall autoconf automake libtool pkg-config libtiff webp little-cms2
 
       # Install Xcode 
       - name: Install Xcode
