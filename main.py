@@ -125,11 +125,17 @@ class TicTacToe(MDApp):
             MDSnackbar(
                 MDSnackbarText(text=f"Winner is player with {icon}"),
                 background_color=self.theme_cls.onPrimaryContainerColor,
+                pos_hint={'center_x':0.5},
+                size_hint_x=0.8,
+                y="80dp"
             ).open()
         else:
             MDSnackbar(
                 MDSnackbarText(text=f"{text}"),
                 background_color=self.theme_cls.onPrimaryContainerColor,
+                pos_hint={'center_x':0.5},
+                size_hint_x=0.8,
+                y="80dp"
             ).open()
 
     def set_bars_colors(self) -> None:
