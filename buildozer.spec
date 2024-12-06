@@ -16,7 +16,7 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 
 # (list) List of inclusions using pattern matching
-source.include_patterns = assets/*,assets/images/*.png, AppIcon/*
+source.include_patterns = assets/*,assets/images/*.png, AppIcon/*, Images.xcassets/* 
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
