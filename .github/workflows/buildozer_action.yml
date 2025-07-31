@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v4
@@ -97,7 +97,7 @@ jobs:
             pkg-config \
             libncurses5-dev \
             libncursesw5-dev \
-            libtinfo5 \
+            libtinfo6 \
             cmake \
             libffi-dev \
             libssl-dev \
@@ -120,7 +120,7 @@ jobs:
       - name: Install pip dependencies
         run: |
           pip install --upgrade pip
-          pip install buildozer cython==0.29.33
+          pip install buildozer cython==3.0.11
 
       # Build with Buildozer
       - name: Build with Buildozer
